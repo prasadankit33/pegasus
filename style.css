@@ -374,6 +374,14 @@ address                         { font-style: italic; }
     width: 460px;
     margin-top: 150px;
 }
+
+/* Account Modal Box */
+.accountmodal .modal-dialog {
+    width: 460px;
+    margin-top: 150px;
+}
+
+
 .ritekhed-login-box {
     float: left;
     width: 100%;

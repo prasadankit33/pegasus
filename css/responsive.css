@@ -23,6 +23,8 @@
 	.ritekhed-fixture-list { margin-bottom: 0px; }
 	.ritekhed-error-wrap form input[type="text"] { width: 100%; margin-bottom: 20px; }
 	.login-register-full .ritekhed-login-box { margin-bottom: 30px; }
+	.login-register-full .ritekhed-account-box { margin-bottom: 30px; }
+	.login-register-full .ritekhed-host-box { margin-bottom: 30px; }
 	.ritekhed-player-thumb-text { width: 100%; margin-left: 0px; }
 
 	/* Footer */
@@ -50,7 +52,11 @@
 	/* Content */
 	.ritekhed-testimonial-slider .slick-arrow,.ritekhed-partner-slider .slick-arrow { display: none !important; }
 	.loginmodal .modal-dialog { width: 100%; }
+	.accountmodal .modal-dialog { width: 100%; }
+	.hostmodal .modal-dialog { width: 100%; }
 	.ritekhed-login-close { right: 15px; }
+	.ritekhed-account-close { right: 15px; }
+	.ritekhed-host-close { right: 15px; }
 	.ritekhed-match-fixture .player-stats-text span { line-height: 1.5; }
 	.ritekhed-match-fixture .ritekhed-client-detail tr > td figure ~ .player-stats-text { margin: 0px 0 0 0px; float: left; width: 100%; }
 	.ritekhed-fixture-list ul { width: 800px; overflow: scroll; }
@@ -73,6 +79,8 @@
 	.ritekhed-error-wrap form { width: 100%; }
 	.ritekhed-error-wrap { padding-top: 20px; padding-bottom: 50px; }
 	.login-register-full .ritekhed-login-box { margin-bottom: 30px; }
+	.login-register-full .ritekhed-account-box { margin-bottom: 30px; }
+	.login-register-full .ritekhed-host-box { margin-bottom: 30px; }
 	.ritekhed-player-list figure ~ .ritekhed-player-list-text { margin-left: 0px; float: left; width: 100%; }
 	.ritekhed-player-list figure { width: 100%; }
 	.ritekhed-player-list figure a i { top: auto; bottom: -22px; right: 50%; }
