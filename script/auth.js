@@ -1,19 +1,19 @@
 
 // listen for auth status changes(verified)
-// auth.onAuthStateChanged(user => {
-//     if (user) {
-//         db.collection('events').onSnapshot(snapshot => {
-//             hostevents(snapshot.docs);
-//             setupUI(user);
-//           }).catch(err => {
-//             console.log(err.message);
-//           });
-//     } else {
-//         console.log('user logged out');
-//         hostevents([]);
-//         setupUI();
-//     }
-//   }) 
+ auth.onAuthStateChanged(user => {
+     if (user) {
+         db.collection('events').onSnapshot(snapshot => {
+             hostevents(snapshot.docs);
+             setupUI(user);
+           }).catch(err => {
+             console.log(err.message);
+           });
+     } else {
+         console.log('user logged out');
+         hostevents([]);
+         setupUI();
+     }
+   }) 
   
 // HOST BUTTON (verified)
 const createForm = document.querySelector('#host-form');

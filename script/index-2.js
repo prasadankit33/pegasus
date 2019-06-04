@@ -1,5 +1,5 @@
  // DOM elements
- //const eventList = document.querySelector('.guides');
+ const eventList = document.querySelector('.events');
  const loggedOutLinks = document.querySelectorAll('.logged-out');
  const loggedInLinks = document.querySelectorAll('.logged-in');
  const accountDetails = document.querySelector('.account-details')
@@ -28,26 +28,34 @@
    }
  };
  
-//  // HOST EVENTS
-//  const hostevents = (data) => {
-//  if (data.length){
-//    let html = '';
-//    data.forEach(doc => {
-//      const event = doc.data();
-//      const li = `
-//        <li>
-//          <div class="collapsible-header grey lighten-4"> ${event.sport} </div>
-//          <div class="collapsible-body white"> ${event.allowed_members} </div>
-//          <div class="collapsible-body white"> ${event.location} </div>
-//        </li>
-//      `;
-//      html += li;
-//    });
-//    eventList.innerHTML = html
-//  }else{
-//    eventList.innerHTML='<h5 class="center-align">Login to view Hosted Matches</h5>';
-//  }
-//  };
+  // HOST EVENTS
+  const hostevents = (data) => {
+  if (data.length){
+      let html = '';
+    data.forEach(doc => {
+      const event = doc.data();
+      const li = `
+        <div class="ritekhed-fixture-table-slider-layer">
+          <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
+          <ul class="ritekhed-bgcolor">
+            <li>${event.sport}<span>${event.allowed_members}</span></li>
+            <li>${event.location}</li>
+            <li class="ritekhed-fixture-addtext">FullBook</li>
+          </ul>
+        </div>
+      `;
+      html += li;
+    });
+    eventList.innerHTML = html
+  }else{
+    const li =`
+    <div class="ritekhed-fixture-table-slider-layer">
+          <h5>Login <span>to view Details</span></h5>
+        </div>
+    `;
+    eventList.innerHTML=li
+  }
+  };
     
  // setup materialize components
  document.addEventListener('DOMContentLoaded', function() {
