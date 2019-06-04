@@ -1,20 +1,35 @@
 
 // listen for auth status changes(verified)
+//let binary;
+//let user1;
  auth.onAuthStateChanged(user => {
      if (user) {
          db.collection('events').onSnapshot(snapshot => {
              hostevents(snapshot.docs);
-             setupUI(user);
+             binary=1;
+             user1=user;
+             setupUI(user1);
+             
            }).catch(err => {
              console.log(err.message);
            });
      } else {
          console.log('user logged out');
          hostevents([]);
-         setupUI();
+         binary=0;
+         setupUI(user1);
      }
    }) 
   
+//TOP LAYER
+//if(binary){
+//  setupUI(user1);
+//}
+//else{
+//  setupUI();
+//}
+
+
 // HOST BUTTON (verified)
 const createForm = document.querySelector('#host-form');
 createForm.addEventListener('submit', (e) => {

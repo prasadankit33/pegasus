@@ -42,8 +42,11 @@
                                 <li><a href="#" class="fab fa-dribbble"></a></li>
                             </ul>
                             <ul class="ritekhed-user-section">
-                                <li><i class="far fa-user"></i> <a href="#" data-toggle="modal" data-target="#loginModal">Login</a></li>
-                                <li><i class="fa fa-sign-in-alt"></i> <a href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a></li>
+                                <li class="logged-out" style="display : block;"><i class="fa fa-user" ></i> <a href="#" class="modal-trigger" data-toggle="modal" data-target="#loginModal">Login</a></li>
+                                <li class="logged-out" style="display : block;"><i class="fa fa-sign-in-alt"></i> <a href="#" class="modal-trigger" data-toggle="modal" data-target="#signupModal">Sign Up</a></li>
+                                <li class="logged-in" style="display : block;"><i></i> <a href="#" data-toggle="modal" class="modal-trigger" data-target="#accountModal">Account</a></li>
+                                <li class="logged-in" style="display : block;"><i></i> <a href="#" data-toggle="modal" class="modal-trigger" data-target="#hostModal">Host</a></li>
+                                <li class="logged-in" style="display : block;"><i></i> <a href="#"  id="logout">Logout</a></li>
                             </ul>
                         </div>
                     </div>
@@ -543,17 +546,16 @@
         </footer>
         <!-- Footer -->
     </div>
-
-
+    
     <!-- LoginModal -->
     <div class="loginmodal modal fade" id="loginModal" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="ritekhed-login-box">
                 <a href="#" data-dismiss="modal" class="ritekhed-login-close ritekhed-color"><i class="fa fa-times"></i></a>
                 <h4>Login To Your Account</h4>
-                <form>
-                    <input type="text" value="Enter username*" onblur="if(this.value == '') { this.value ='Enter username*'; }" onfocus="if(this.value =='Enter username*') { this.value = ''; }">
-                    <input type="password" value="Password*" onblur="if(this.value == '') { this.value ='Password*'; }" onfocus="if(this.value =='Password*') { this.value = ''; }">
+                <form id="login-form">
+                    <input id="login-email" type="text" value="Enter username*" onblur="if(this.value == '') { this.value ='Enter username*'; }" onfocus="if(this.value =='Enter username*') { this.value = ''; }">
+                    <input id="login-password" type="password" value="Password*" onblur="if(this.value == '') { this.value ='Password*'; }" onfocus="if(this.value =='Password*') { this.value = ''; }">
                     <a href="#" class="ritekhed-colorhover">Forget Password?</a>
                     <div class="clearfix"></div>
                     <label><input type="submit" value="Sign In" class="ritekhed-bordercolor ritekhed-color"></label>
@@ -577,11 +579,12 @@
             <div class="ritekhed-login-box">
                 <a href="#" data-dismiss="modal" class="ritekhed-login-close ritekhed-color"><i class="fa fa-times"></i></a>
                 <h4>Sign Up Now</h4>
-                <form>
-                    <input type="text" value="Enter username*" onblur="if(this.value == '') { this.value ='Enter username*'; }" onfocus="if(this.value =='Enter username*') { this.value = ''; }">
-                    <input type="text" value="Type your password*" onblur="if(this.value == '') { this.value ='Type your password*'; }" onfocus="if(this.value =='Type your password*') { this.value = ''; }">
-                    <input type="text" value="Confirm your password*" onblur="if(this.value == '') { this.value ='Confirm your password*'; }" onfocus="if(this.value =='Confirm your password*') { this.value = ''; }">
-                    <a href="#" class="ritekhed-colorhover">Forget Password?</a>
+                <form id="signup-form">
+                    <input id="signup-email" type="text" value="Enter username*" onblur="if(this.value == '') { this.value ='Enter username*'; }" onfocus="if(this.value =='Enter username*') { this.value = ''; }" required>
+                    <input id="signup-password" type="text" value="Type your password*" onblur="if(this.value == '') { this.value ='Type your password*'; }" onfocus="if(this.value =='Type your password*') { this.value = ''; }" required>
+                    <input type="text" value="Confirm your password*" onblur="if(this.value == '') { this.value ='Confirm your password*'; }" onfocus="if(this.value =='Confirm your password*') { this.value = ''; }" required>
+                    <input id="signup-bio" type="text" value="Enter one line bio*" onblur="if(this.value == '') { this.value ='Enter one line bio*'; }" onfocus="if(this.value =='Enter one line bio*') { this.value = ''; }"required />
+                    <a href="#" class="ritekhed-colorhover">Forgot Password?</a>
                     <div class="clearfix"></div>
                     <label><input type="submit" value="Sign Up" class="ritekhed-bordercolor ritekhed-color"></label>
                 </form>
@@ -598,6 +601,38 @@
         </div>
     </div>
 
+    <!-- AccountModal -->
+    <div class="accountmodal modal fade" id="accountModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="ritekhed-account-box">
+                <a href="#" data-dismiss="modal" class="ritekhed-account-close ritekhed-color"><i class="fa fa-times"></i></a>
+                <h4>View Details</h4>
+                <!--DISPLAY ACCOUNT DETAILS-->
+                <div class="account-details"></div>
+                
+            </div>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+
+    <!-- HOST MODAL-->
+    <div class="hostmodal modal fade" id="hostModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="ritekhed-host-box">
+                    <a href="#" data-dismiss="modal" class="ritekhed-host-close ritekhed-color"><i class="fa fa-times"></i></a>
+                    <h4>Host A Match</h4>
+                    <form id="host-form">
+                            <input id="sport" type="text" value="Enter Sport*" onblur="if(this.value == '') { this.value ='Enter Sport*'; }" onfocus="if(this.value =='Enter Sport*') { this.value = ''; }" required>
+                            <input id="allowed_members" type="text" value="Enter maximum no. of members allowed*" onblur="if(this.value == '') { this.value ='Enter maximum no. of members allowed*'; }" onfocus="if(this.value =='Enter maximum no. of members allowed*') { this.value = ''; }" required>
+                            <input id="location" type="text" value="Enter location*" onblur="if(this.value == '') { this.value ='Enter location*'; }" onfocus="if(this.value =='Enter location*') { this.value = ''; }"required />
+                    
+                            <div class="clearfix"></div>
+                            <label><input type="submit" value="Host" class="ritekhed-bordercolor ritekhed-color"></label>
+                    </form>
+                </div>
+            <div class="clearfix"></div>
+            </div>
+        </div>
     <!-- jQuery -->
     <script src="script/jquery.js"></script>
     <script src="script/popper.min.js"></script>
@@ -611,6 +646,34 @@
     <script src="script/jquery.countdown.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="script/functions.js"></script>
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-firestore.js"></script>
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+        https://firebase.google.com/docs/web/setup#config-web-app -->
+
+    <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyDdn93YS7xZC_LSpsQd6qxrlzez_CvuHDY",
+            authDomain: "pegasus-e2b2c.firebaseapp.com",
+            databaseURL: "https://pegasus-e2b2c.firebaseio.com",
+            projectId: "pegasus-e2b2c",
+            storageBucket: "pegasus-e2b2c.appspot.com",
+            messagingSenderId: "805540810765",
+            appId: "1:805540810765:web:5955e8d374c6127b"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth(); // authorization variable
+        const db = firebase.firestore(); // database variable
+        // update firestore settings
+        db.settings({ timestampsInSnapshots: true });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script src="script/index-2.js"></script>   
+    <script src="script/auth.js"></script>
 </body>
 
 

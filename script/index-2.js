@@ -31,7 +31,7 @@
   // HOST EVENTS
   const hostevents = (data) => {
   if (data.length){
-      let html = '';
+      let html = '<div class="container-fluid "><div class="row" ><div class="ritekhed-fixture-table-slider ">';
     data.forEach(doc => {
       const event = doc.data();
       const li = `
@@ -46,6 +46,7 @@
       `;
       html += li;
     });
+    html+=`</div></div></div>`
     eventList.innerHTML = html
   }else{
     const li =`
