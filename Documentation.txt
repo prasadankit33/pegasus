@@ -1,0 +1,32 @@
+ Volume in drive C is Windows
+ Volume Serial Number is E23E-D7E3
+
+ Directory of C:\Users\hp\Desktop\WEB\latest
+
+04-06-2019  23:24    <DIR>          .
+04-06-2019  23:24    <DIR>          ..
+04-06-2019  13:11    <DIR>          .vscode
+04-06-2019  17:08            18,211 404.html
+04-06-2019  23:14            43,551 all-fixture.html
+04-06-2019  23:15            35,375 blog-grid.html
+04-06-2019  23:15            26,713 contact-us.html
+04-06-2019  14:11    <DIR>          css
+04-06-2019  23:24                 0 Documentation.txt
+04-06-2019  17:08    <DIR>          extra-images
+04-06-2019  23:15            45,876 fixture-detail.html
+04-06-2019  23:16            39,995 fixture-list.html
+04-06-2019  13:11    <DIR>          fonts
+04-06-2019  23:16            27,488 gallery-classic.html
+04-06-2019  23:17            28,552 gallery-simple.html
+04-06-2019  13:11    <DIR>          images
+04-06-2019  23:14            61,716 index-2.html
+04-06-2019  23:06            24,115 login-register.html
+04-06-2019  23:17            35,316 player-detail.html
+04-06-2019  23:18            48,548 player-grid-wls.html
+04-06-2019  23:18            38,411 player-grid.html
+04-06-2019  14:07    <DIR>          script
+04-06-2019  23:18            33,429 search-result.html
+04-06-2019  23:19            45,205 shop-detail.html
+04-06-2019  13:11            87,238 style.css
+              17 File(s)        639,739 bytes
+               8 Dir(s)  248,506,609,664 bytes free
