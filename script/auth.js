@@ -6,9 +6,9 @@
      if (user) {
          db.collection('events').onSnapshot(snapshot => {
              hostevents(snapshot.docs);
-             binary=1;
+             //binary=1;
              user1=user;
-             setupUI(user1);
+             setupUI(user);
              
            }).catch(err => {
              console.log(err.message);
@@ -16,8 +16,8 @@
      } else {
          console.log('user logged out');
          hostevents([]);
-         binary=0;
-         setupUI(user1);
+         //binary=0;
+         setupUI(user);
      }
    }) 
   
