@@ -52,7 +52,7 @@ createForm.addEventListener('submit', (e) => {
 });
 
 //JOIN BUTTON 
-const createForm = document.querySelector('#join-form');
+/*const createForm = document.querySelector('#join-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
   return db.collection('users').doc(e.user.uid).set({
@@ -69,7 +69,7 @@ createForm.addEventListener('submit', (e) => {
     M.Modal.getInstance(modal).close();
     createForm.reset();
   });
-});
+});*/
 
 // signup(VERIFIED)
 const signupForm = document.querySelector('#signup-form');
