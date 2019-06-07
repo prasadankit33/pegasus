@@ -51,6 +51,26 @@ createForm.addEventListener('submit', (e) => {
   });
 });
 
+//JOIN BUTTON 
+const createForm = document.querySelector('#join-form');
+createForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  return db.collection('users').doc(e.user.uid).set({
+    eventid : db.collection('users').doc(cred.user.uid)
+    
+  }).then(() => {
+    // close the create modal & reset form
+    const modal = document.querySelector('#hostModal');
+    M.Modal.getInstance(modal).close();
+    createForm.reset();
+  }).catch(err => {
+    console.log(err.message);
+    const modal = document.querySelector('#hostModal');
+    M.Modal.getInstance(modal).close();
+    createForm.reset();
+  });
+});
+
 // signup(VERIFIED)
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
