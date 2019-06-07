@@ -1,7 +1,7 @@
 
 // listen for auth status changes(verified)
 //let binary;
-//let user1;
+//let user1
  auth.onAuthStateChanged(user => {
      if (user) {
          db.collection('events').onSnapshot(snapshot => {
