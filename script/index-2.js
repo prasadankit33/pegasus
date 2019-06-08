@@ -38,9 +38,13 @@
         <div class="ritekhed-fixture-table-slider-layer">
           <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
           <ul class="ritekhed-bgcolor">
+          <form id="join-form${event}">
+          <li>${event.Id}</li>
             <li>${event.sport}<span>${event.allowed_members}</span></li>
             <li>${event.location}</li>
-            <li class="ritekhed-fixture-addtext">FullBook</li>
+            
+            <label><input type="submit" value="Join" class="ritekhed-bordercolor ritekhed-color"></label>
+            </form>
           </ul>
         </div>
       `;

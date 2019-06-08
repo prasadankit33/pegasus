@@ -55,19 +55,12 @@ createForm.addEventListener('submit', (e) => {
 /*const createForm = document.querySelector('#join-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  return db.collection('users').doc(e.user.uid).set({
-    eventid : db.collection('users').doc(cred.user.uid)
+  return db.collection('users').set({
+    eventid : db.collection('events').doc('user.uid').
     
-  }).then(() => {
-    // close the create modal & reset form
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
   }).catch(err => {
     console.log(err.message);
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
+    
   });
 });*/
 
@@ -83,7 +76,8 @@ signupForm.addEventListener('submit', (e) => {
   // sign up the user
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     return db.collection('users').doc(cred.user.uid).set({
-        bio: signupForm['signup-bio'].value
+        bio: signupForm['signup-bio'].value,
+        username: signupForm['username'].value
     });
   }).then(() =>{
     const modal = document.querySelector('#signupModal');
