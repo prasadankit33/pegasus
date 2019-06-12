@@ -4,8 +4,11 @@
  const loggedInLinks = document.querySelectorAll('.logged-in');
  const accountDetails = document.querySelector('.account-details')
  
- const setupUI = (user) => {
+ let setupUI = (user) => {
    if (user) {
+    //setting up default profile
+
+
      db.collection('users').doc(user.uid).get().then(doc => {
            // account info
            let html = `
@@ -81,4 +84,26 @@
      var elems = document.querySelectorAll('select');
      var instances = M.FormSelect.init(elems);
    });
- 
+
+
+
+
+  //SETTING UP USER PROFILE FOR THE FIRST TIME(DEFAULT VALUES)
+ let profile = (cred) => {
+  let userId=cred.user.uid;
+  db.collection('users').doc(userId).collection('address').doc('permanent').set({
+    country:null,
+    district:null,
+    locality: null,
+    pincode:null,
+    state:null,
+    street:null
+  });
+  db.collection('users').doc(userId).collection('hostEvents').doc('newevent').set({
+    eventId:null
+  });
+  db.collection('users').doc(userId).collection('joinEvents').doc('newevent').set({
+    eventId:null
+  });
+  
+};

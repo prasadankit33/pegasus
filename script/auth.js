@@ -1,4 +1,5 @@
 
+
 // listen for auth status changes(verified)
 //let binary;
 //let user1
@@ -63,7 +64,7 @@ createForm.addEventListener('submit', (e) => {
     
   });
 });*/
-
+ 
 // signup(VERIFIED)
 const signupForm = document.querySelector('#signup-form');
 signupForm.addEventListener('submit', (e) => {
@@ -76,6 +77,8 @@ signupForm.addEventListener('submit', (e) => {
 
   // sign up the user
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
+    console.log(cred.user.uid);
+    profile(cred);
     return db.collection('users').doc(cred.user.uid).set({
         username: signupForm['username'].value,
         rating : 0,
@@ -83,8 +86,10 @@ signupForm.addEventListener('submit', (e) => {
         phonenumber : null,
         gender: null,
         sportInterested:  null,
+        
     });
   }).then(() =>{
+    
     const modal = document.querySelector('#signupModal');
     M.Modal.getInstance(modal).close();
     signupForm.reset();
@@ -115,7 +120,7 @@ loginForm.addEventListener('submit', (e) => {
   // log the user in
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
     //console.log(cred.user);
-    // close the signup modal & reset form
+    // close the login modal & reset form
     const modal = document.querySelector('#loginModal');
     M.Modal.getInstance(modal).close();
     loginForm.reset();
