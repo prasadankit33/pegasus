@@ -8,10 +8,14 @@
    if (user) {
      db.collection('users').doc(user.uid).get().then(doc => {
            // account info
-           const html = `
+           let html = `
              <div>Logged in as ${user.email}</div>
-             <div>BIO :  ${doc.data().bio}</div>
-           `;
+             <div>USERNAME :  ${doc.data().username}</div>`;
+            if (doc.data().sportInterested!=null)
+            {
+              html += `<div>Sport Interested : ${doc.data().sportInterested}</div>`
+            }
+             html+=`<div>Rating : ${doc.data().rating}</div>`;
            accountDetails.innerHTML = html;
      })
      
