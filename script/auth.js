@@ -107,7 +107,7 @@ loginForm.addEventListener('submit', (e) => {
 const createForm = document.querySelector('#host-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  db.collection('events').add({
+  db.collection('events').doc(user_id).set({
     gender:       createForm.gender.value,
     lowerage:     createForm.lowerage.value,
     upperage:     createForm.upperage.value,
@@ -115,6 +115,15 @@ createForm.addEventListener('submit', (e) => {
     organiserId:  user_id,
     sport:        createForm.sport.value,
     time:         createForm.time.value,
+  });
+  db.collection('events').doc(user_id).collection('location').doc('event_location').set({
+    country:null,
+    district:null,
+    landmark: null,
+    locality: null,
+    pincode:null,
+    state:null,
+    street:null
   }).then(() => {
     // close the create modal & reset form
     const modal = document.querySelector('#hostModal');
@@ -125,16 +134,6 @@ createForm.addEventListener('submit', (e) => {
     const modal = document.querySelector('#hostModal');
     M.Modal.getInstance(modal).close();
     createForm.reset();
-  });
-
-  db.collection('events').doc(user_id).collection('location').doc('event_location').set({
-    country:null,
-    district:null,
-    landmark: null,
-    locality: null,
-    pincode:null,
-    state:null,
-    street:null
   });
 });
 
