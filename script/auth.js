@@ -1,10 +1,11 @@
 
-
+let user_id=null;
 // listen for auth status changes(verified)
 //let binary;
 //let user1
  auth.onAuthStateChanged(user => {
      if (user) {
+       user_id=user.uid;
          db.collection('events').onSnapshot(snapshot => {
              hostevents(snapshot.docs);
              //binary=1;
@@ -29,28 +30,6 @@
 //else{
 //  setupUI();
 //}
-
-
-// HOST BUTTON (verified)
-const createForm = document.querySelector('#host-form');
-createForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  db.collection('events').add({
-    sport: createForm.sport.value,
-    allowed_members: createForm.allowed_members.value,
-    location: createForm.location.value
-  }).then(() => {
-    // close the create modal & reset form
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
-  }).catch(err => {
-    console.log(err.message);
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
-  });
-});
 
 //JOIN BUTTON 
 /*const createForm = document.querySelector('#join-form');
@@ -79,6 +58,7 @@ signupForm.addEventListener('submit', (e) => {
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     console.log(cred.user.uid);
     profile(cred);
+    user_id=cred.user.uid;
     return db.collection('users').doc(cred.user.uid).set({
         username: signupForm['username'].value,
         rating : 0,
@@ -96,18 +76,6 @@ signupForm.addEventListener('submit', (e) => {
   });
 });
 
-
-// logout(verified)
-const logout = document.querySelector('#logout');
-logout.addEventListener('click', (e) => {
-  e.preventDefault();
-  auth.signOut().then(() => {
-    console.log('user signed out');
-  }).catch(err => {
-    console.log(err.message);
-  });
-});
-
 // login(verified)
 const loginForm = document.querySelector('#login-form');
 loginForm.addEventListener('submit', (e) => {
@@ -121,6 +89,7 @@ loginForm.addEventListener('submit', (e) => {
   auth.signInWithEmailAndPassword(email, password).then((cred) => {
     //console.log(cred.user);
     // close the login modal & reset form
+    user_id=cred.user.uid;
     const modal = document.querySelector('#loginModal');
     M.Modal.getInstance(modal).close();
     loginForm.reset();
@@ -132,4 +101,50 @@ loginForm.addEventListener('submit', (e) => {
     alert('Login Failed');
   });
 
+});
+
+// HOST BUTTON (verified)
+const createForm = document.querySelector('#host-form');
+createForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  db.collection('events').add({
+    gender:       createForm.gender.value,
+    lowerage:     createForm.lowerage.value,
+    upperage:     createForm.upperage.value,
+    memberslimit: createForm.memberslimit.value,
+    organiserId:  user_id,
+    sport:        createForm.sport.value,
+    time:         createForm.time.value,
+  }).then(() => {
+    // close the create modal & reset form
+    const modal = document.querySelector('#hostModal');
+    M.Modal.getInstance(modal).close();
+    createForm.reset();
+  }).catch(err => {
+    console.log(err.message);
+    const modal = document.querySelector('#hostModal');
+    M.Modal.getInstance(modal).close();
+    createForm.reset();
+  });
+
+  db.collection('events').doc(user_id).collection('location').doc('event_location').set({
+    country:null,
+    district:null,
+    landmark: null,
+    locality: null,
+    pincode:null,
+    state:null,
+    street:null
+  });
+});
+
+// logout(verified)
+const logout = document.querySelector('#logout');
+logout.addEventListener('click', (e) => {
+  e.preventDefault();
+  auth.signOut().then(() => {
+    console.log('user signed out');
+  }).catch(err => {
+    console.log(err.message);
+  });
 });

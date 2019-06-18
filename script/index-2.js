@@ -46,10 +46,11 @@
           <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
           <ul class="ritekhed-bgcolor">
           <form id="join-form${event}">
-          <li>${event.Id}</li>
-            <li>${event.sport}<span>${event.allowed_members}</span></li>
-            <li>${event.location}</li>
-            
+            <li>Sport: ${event.sport}</li>
+            <li>Gender: ${event.gender}</li>
+            <li>Members Limit: ${event.memberslimit}</li>
+            <li>AGE:  ${event.lowerage} - ${event.upperage}</li>
+            <li>Time: ${event.time}</li>
             <label><input type="submit" value="Join" class="ritekhed-bordercolor ritekhed-color"></label>
             </form>
           </ul>
@@ -92,6 +93,7 @@
  let profile = (cred) => {
   let userId=cred.user.uid;
   db.collection('users').doc(userId).collection('address').doc('permanent').set({
+    HouseDetails: null,
     country:null,
     district:null,
     locality: null,
