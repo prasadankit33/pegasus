@@ -31,18 +31,6 @@ let user_id=null;
 //  setupUI();
 //}
 
-//JOIN BUTTON 
-/*const createForm = document.querySelector('#join-form');
-createForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  return db.collection('users').set({
-    eventid : db.collection('events').doc('user.uid').
-    
-  }).catch(err => {
-    console.log(err.message);
-    
-  });
-});*/
  
 // signup(VERIFIED)
 const signupForm = document.querySelector('#signup-form');
@@ -115,6 +103,7 @@ createForm.addEventListener('submit', (e) => {
     organiserId:  user_id,
     sport:        createForm.sport.value,
     time:         createForm.time.value,
+    description:  createForm.description.value
   });
   db.collection('events').doc(user_id).collection('location').doc('event_location').set({
     country:null,
@@ -137,6 +126,12 @@ createForm.addEventListener('submit', (e) => {
   });
 });
 
+
+
+
+
+
+
 // logout(verified)
 const logout = document.querySelector('#logout');
 logout.addEventListener('click', (e) => {
@@ -145,5 +140,18 @@ logout.addEventListener('click', (e) => {
     console.log('user signed out');
   }).catch(err => {
     console.log(err.message);
+  });
+});
+
+//JOIN BUTTON 
+const joinForm = document.querySelector('#join');
+joinForm.addEventListener('click', (e) => {
+  e.preventDefault();
+  let organiser = db.collection('events').organiserId;
+  db.collection('users').doc(user_id).collection('joinEvents').doc(organiser).set({
+      eventId: organiser
+  }).catch(err => {
+    console.log(err.message);
+    
   });
 });

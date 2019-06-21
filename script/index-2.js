@@ -42,17 +42,16 @@
     data.forEach(doc => {
       const event = doc.data();
       const li = `
-        <div class="ritekhed-fixture-table-slider-layer">
+        <div class="ritekhed-fixture-table-slider-layer" id="${event.organiserId}">
           <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
           <ul class="ritekhed-bgcolor">
-          <form id="join-form${event}">
             <li>Sport: ${event.sport}</li>
             <li>Gender: ${event.gender}</li>
             <li>Members Limit: ${event.memberslimit}</li>
             <li>AGE:  ${event.lowerage} - ${event.upperage}</li>
             <li>Time: ${event.time}</li>
-            <label><input type="submit" value="Join" class="ritekhed-bordercolor ritekhed-color"></label>
-            </form>
+            <li>Description: ${event.description}</li>
+            <li class="ritekhed-bordercolor ritekhed-color"><i></i> <a href="#"  id="join">Join</a></li>  
           </ul>
         </div>
       `;
