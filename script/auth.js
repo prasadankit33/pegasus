@@ -155,14 +155,13 @@ logout.addEventListener('click', (e) => {
 });
 
 //JOIN BUTTON 
-const joinForm = document.querySelector('#join');
-joinForm.addEventListener('click', (e) => {
+const joinForm = document.querySelectorAll('.joinEvents');
+joinForm.addEventListener('submit', (e) => {
   e.preventDefault();
   let organiser = db.collection('events').organiserId;
   db.collection('users').doc(user_id).collection('joinEvents').doc(organiser).set({
       eventId: organiser
   }).catch(err => {
     console.log(err.message);
-    
   });
 });

@@ -2,7 +2,8 @@
  const eventList = document.querySelector('.events');
  const loggedOutLinks = document.querySelectorAll('.logged-out');
  const loggedInLinks = document.querySelectorAll('.logged-in');
- const accountDetails = document.querySelector('.account-details')
+ const accountDetails = document.querySelector('.account-details');
+
  
  let setupUI = (user) => {
    if (user) {
@@ -34,7 +35,7 @@
      loggedOutLinks.forEach(item => item.style.display = 'block');
    }
  };
- 
+ let event_information=[];
   // HOST EVENTS
   const hostevents = (data) => {
   if (data.length){
@@ -42,23 +43,28 @@
     data.forEach(doc => {
       const event = doc.data();
       const li = `
-        <div class="ritekhed-fixture-table-slider-layer" id="${event.organiserId}">
+        <div class="ritekhed-fixture-table-slider-layer">
           <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
           <ul class="ritekhed-bgcolor">
-            <li>Sport: ${event.sport}</li>
-            <li>Gender: ${event.gender}</li>
-            <li>Members Limit: ${event.memberslimit}</li>
-            <li>AGE:  ${event.lowerage} - ${event.upperage}</li>
-            <li>Time: ${event.time}</li>
-            <li>Description: ${event.description}</li>
-            <li class="ritekhed-bordercolor ritekhed-color"><i></i> <a href="#"  id="join">Join</a></li>  
+            <li>Sport: ${doc.data().sport}</li>
+            <li>Gender: ${doc.data().gender}</li>
+            <li>Members Limit: ${doc.data().memberslimit}</li>
+            <li>AGE:  ${doc.data().lowerage} - ${doc.data().upperage}</li>
+            <li>Time: ${doc.data().time}</li>
+            <li>Description: ${doc.data().description}</li>
+            <li class="donotshow">id: ${doc.id}
+            <input  id="document_id" type="text" value=" ${doc.id}*" onblur="if(this.value == '') { this.value =' ${doc.id}*'; }" onfocus="if(this.value ==' ${doc.id}*') { this.value = ''; }" required>
+            </li>
+            <li class="ritekhed-bordercolor ritekhed-color joinEvents"><i></i> <a href="#"  id="${doc.id}">Join</a></li>  
           </ul>
         </div>
       `;
       html += li;
+      event_information.push(doc.id);
     });
-    html+=`</div></div></div>`
-    eventList.innerHTML = html
+    html+=`</div></div></div>`;
+    eventList.innerHTML = html;
+    //console.log(event_information);
   }else{
     const li =`
     <div class="ritekhed-fixture-table-slider-layer">
@@ -68,6 +74,9 @@
     eventList.innerHTML=li
   }
   };
+
+  const should_remove = document.querySelectorAll('.donotshow');
+  should_remove.css({"display": "block"});
     
  // setup materialize components
  document.addEventListener('DOMContentLoaded', function() {
