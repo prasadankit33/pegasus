@@ -45,8 +45,15 @@ signupForm.addEventListener('submit', (e) => {
   // sign up the user
   auth.createUserWithEmailAndPassword(email, password).then(cred => {
     console.log(cred.user.uid);
-    profile(cred);
     user_id=cred.user.uid;
+    db.collection('users').doc(cred.user.uid).collection('address').add({
+        HouseDetails:null,
+        country:null,
+        locality:null,
+        pincode:null,
+        state:null,
+        street:null
+    });
     return db.collection('users').doc(cred.user.uid).set({
         username: signupForm['username'].value,
         rating : 0,
@@ -54,6 +61,7 @@ signupForm.addEventListener('submit', (e) => {
         phonenumber : null,
         gender: null,
         sportInterested:  null,
+        emailId: cred.user.email
         
     });
   }).then(() =>{
@@ -95,7 +103,8 @@ loginForm.addEventListener('submit', (e) => {
 const createForm = document.querySelector('#host-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  db.collection('events').doc(user_id).set({
+  let docRef=db.collection('events').doc()
+  db.collection('events').doc(docRef.id).set({
     gender:       createForm.gender.value,
     lowerage:     createForm.lowerage.value,
     upperage:     createForm.upperage.value,
@@ -105,29 +114,31 @@ createForm.addEventListener('submit', (e) => {
     time:         createForm.time.value,
     description:  createForm.description.value
   });
-  db.collection('events').doc(user_id).collection('location').doc('event_location').set({
-    country:null,
-    district:null,
-    landmark: null,
-    locality: null,
-    pincode:null,
-    state:null,
-    street:null
-  }).then(() => {
-    // close the create modal & reset form
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
-  }).catch(err => {
-    console.log(err.message);
-    const modal = document.querySelector('#hostModal');
-    M.Modal.getInstance(modal).close();
-    createForm.reset();
+
+    db.collection('users').doc(user_id).collection('hostEvents').add({
+      eventId: docRef.id
+    });
+    console.log("Document written with ID: ", docRef.id);
+    db.collection('events').doc(docRef.id).collection('location').doc('event_location').set({
+      country:null,
+      district:null,
+      landmark: null,
+      locality: null,
+      pincode:null,
+      state:null,
+      street:null
+    }).then(() => {
+      // close the create modal & reset form
+      const modal = document.querySelector('#hostModal');
+      M.Modal.getInstance(modal).close();
+      createForm.reset();
+    }).catch(err => {
+      console.log(err.message);
+      const modal = document.querySelector('#hostModal');
+      M.Modal.getInstance(modal).close();
+      createForm.reset();
+    });
   });
-});
-
-
-
 
 
 

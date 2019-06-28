@@ -12,7 +12,7 @@
      db.collection('users').doc(user.uid).get().then(doc => {
            // account info
            let html = `
-             <div>Logged in as ${user.email}</div>
+             <div>Logged in as ${doc.data().emailId}</div>
              <div>USERNAME :  ${doc.data().username}</div>`;
             if (doc.data().sportInterested!=null)
             {
@@ -89,7 +89,7 @@
 
 
   //SETTING UP USER PROFILE FOR THE FIRST TIME(DEFAULT VALUES)
- let profile = (cred) => {
+ /*let profile = (cred) => {
   let userId=cred.user.uid;
   db.collection('users').doc(userId).collection('address').doc('permanent').set({
     HouseDetails: null,
@@ -106,5 +106,4 @@
   db.collection('users').doc(userId).collection('joinEvents').doc('newevent').set({
     eventId:null
   });
-  
-};
+};*/
