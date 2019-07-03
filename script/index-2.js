@@ -45,7 +45,7 @@
       const li = `
         <div class="ritekhed-fixture-table-slider-layer">
           <time class="ritekhed-bgcolor-two" datetime="2008-02-14 20:00">August 28, 2019 <br>20:00</br></time>
-          <ul class="ritekhed-bgcolor">
+          <ul class="ritekhed-bgcolor joinEvents">
             <li>Sport: ${doc.data().sport}</li>
             <li>Gender: ${doc.data().gender}</li>
             <li>Members Limit: ${doc.data().memberslimit}</li>
@@ -55,7 +55,7 @@
             <li class="donotshow">id: ${doc.id}
             <input  id="document_id" type="text" value=" ${doc.id}*" onblur="if(this.value == '') { this.value =' ${doc.id}*'; }" onfocus="if(this.value ==' ${doc.id}*') { this.value = ''; }" required>
             </li>
-            <li class="ritekhed-bordercolor ritekhed-color joinEvents"><i></i> <a href="#"  id="${doc.id}">Join</a></li>  
+            <li class="ritekhed-bordercolor ritekhed-color "> <button class="joinEvents"  name="event_name" type="submit" value=" ${doc.id}" onclick="joinEvents(value)">Join</button></li>  
           </ul>
         </div>
       `;
@@ -74,7 +74,18 @@
     eventList.innerHTML=li
   }
   };
-
+//Join Button
+  function joinEvents(event_id){
+    console.log(event_id);
+        db.collection('events').doc(event_id).collection('participants').add({
+          ParticipantId:user_id,
+        });
+        db.collection('users').doc(user_id).collection('joinEvents').add({
+          eventId: event_id,
+        }).catch(err => {
+        console.log(err.message);
+        });
+  }
   const should_remove = document.querySelectorAll('.donotshow');
   should_remove.css({"display": "block"});
     
@@ -94,7 +105,21 @@
      var instances = M.FormSelect.init(elems);
    });
 
+//JOIN BUTTON 
 
+/*for(let i=0;i<joinForm.length;i++)
+{
+  console.log(joinForm[i]['document_id'].value);
+}*/
+/*for(let i=0;i<joinForm.length;i++)
+{
+  joinForm[i].addEventListener('submit', (e) => {
+    e.preventDefault();
+    let event_id=joinForm['document_id'].value;
+    
+    
+  });
+}*/
 
 
   //SETTING UP USER PROFILE FOR THE FIRST TIME(DEFAULT VALUES)

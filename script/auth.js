@@ -67,8 +67,8 @@ signupForm.addEventListener('submit', (e) => {
   }).then(() =>{
     
     const modal = document.querySelector('#signupModal');
-    M.Modal.getInstance(modal).close();
     signupForm.reset();
+    M.Modal.getInstance(modal).close();
   });
 });
 
@@ -87,8 +87,9 @@ loginForm.addEventListener('submit', (e) => {
     // close the login modal & reset form
     user_id=cred.user.uid;
     const modal = document.querySelector('#loginModal');
-    M.Modal.getInstance(modal).close();
     loginForm.reset();
+    M.Modal.getInstance(modal).close();
+    
   }).catch(err => {
     console.log(err.message);
     const modal = document.querySelector('#loginModal');
@@ -130,17 +131,40 @@ createForm.addEventListener('submit', (e) => {
     }).then(() => {
       // close the create modal & reset form
       const modal = document.querySelector('#hostModal');
-      M.Modal.getInstance(modal).close();
       createForm.reset();
+      M.Modal.getInstance(modal).close();
+      
     }).catch(err => {
       console.log(err.message);
       const modal = document.querySelector('#hostModal');
-      M.Modal.getInstance(modal).close();
       createForm.reset();
+      M.Modal.getInstance(modal).close();
+      
     });
   });
 
+//JOIN BUTTON 
+/*const joinForm = document.getElementsByClassName('joinEvents');
 
+for(let i=0;i<joinForm.length;i++)
+{
+  console.log(joinForm[i]['document_id'].value);
+}*/
+/*for(let i=0;i<joinForm.length;i++)
+{
+  joinForm[i].addEventListener('submit', (e) => {
+    e.preventDefault();
+    let event_id=joinForm['document_id'].value;
+    db.collection('events').doc(event_id).collection('participants').doc().add({
+        ParticipantId:user_id,
+    });
+    db.collection('users').doc(user_id).collection('joinEvents').doc().add({
+        eventId: event_id,
+    }).catch(err => {
+      console.log(err.message);
+    });
+  });
+}*/
 
 
 // logout(verified)
@@ -154,14 +178,3 @@ logout.addEventListener('click', (e) => {
   });
 });
 
-//JOIN BUTTON 
-const joinForm = document.querySelectorAll('.joinEvents');
-joinForm.addEventListener('submit', (e) => {
-  e.preventDefault();
-  let organiser = db.collection('events').organiserId;
-  db.collection('users').doc(user_id).collection('joinEvents').doc(organiser).set({
-      eventId: organiser
-  }).catch(err => {
-    console.log(err.message);
-  });
-});
