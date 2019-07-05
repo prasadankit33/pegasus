@@ -80,8 +80,12 @@
         db.collection('events').doc(event_id).collection('participants').add({
           ParticipantId:user_id,
         });
-        db.collection('users').doc(user_id).collection('joinEvents').add({
+        return db.collection('users').doc(user_id).collection('joinEvents').add({
           eventId: event_id,
+        }).then((ref)=>{
+          console.log('hi');
+          
+          
         }).catch(err => {
         console.log(err.message);
         });
