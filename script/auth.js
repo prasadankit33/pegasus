@@ -103,28 +103,28 @@ loginForm.addEventListener('submit', (e) => {
 const createForm = document.querySelector('#host-form');
 createForm.addEventListener('submit', (e) => {
   e.preventDefault();
-  let docRef=db.collection('events').doc()
-  
+  console.log(createForm.datetime.value.slice(11,19));
+  let docRef=db.collection('events').doc();
     db.collection('users').doc(user_id).collection('hostEvents').doc(docRef.id).set({
       eventId: docRef.id
     });
     return db.collection('events').doc(docRef.id).set({
-      country:null,
-      city:null,
-      date:null,
-      landmark: null,
-      latitude:null,
-      longitude:null,
-      participated:null,
-      pincode:null,
-      state:null,
+      country:      createForm.country.value,
+      city:         createForm.city.value,
+      date:         createForm.datetime.value.slice(0,10),
+      landmark:     createForm.landmark.value,
+      latitude:     null,
+      longitude:    null,
+      participated: null,
+      pincode:      createForm.pincode.value,
+      state:        createForm.state.value,
       gender:       createForm.gender.value,
       lowerage:     createForm.lowerage.value,
       upperage:     createForm.upperage.value,
       memberslimit: createForm.memberslimit.value,
       organiserId:  user_id,
       sport:        createForm.sport.value,
-      time:         createForm.time.value,
+      time:         createForm.datetime.value.slice(11,19),
       description:  createForm.description.value
     }).then(() => {
       // close the create modal & reset form

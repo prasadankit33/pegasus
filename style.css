@@ -3524,3 +3524,12 @@ li:hover .ritekhed-gallery-classic-text {
     position: relative;
     color: #27282a;
 }
+
+
+.container {
+    margin-top: 40px;
+  }
+  
+  .btn-primary {
+    width: 100%;
+  }

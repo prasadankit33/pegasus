@@ -937,9 +937,21 @@
                             <input id="lowerage" type="text" value="Enter Lowerage limit*" onblur="if(this.value == '') { this.value ='Enter Lowerage limit*'; }" onfocus="if(this.value =='Enter Lowerage limit*') { this.value = ''; }" required>
                             <input id="upperage" type="text" value="Enter Upperage limit*" onblur="if(this.value == '') { this.value ='Enter Upperage limit*'; }" onfocus="if(this.value =='Enter Upperage limit*') { this.value = ''; }" required>
                             <input id="memberslimit" type="text" value="Enter maximum no. of members allowed*" onblur="if(this.value == '') { this.value ='Enter maximum no. of members allowed*'; }" onfocus="if(this.value =='Enter maximum no. of members allowed*') { this.value = ''; }" required>
-                            <input id="time" type="text" value="Enter time and date*" onblur="if(this.value == '') { this.value ='Enter time and date*'; }" onfocus="if(this.value =='Enter time and date*') { this.value = ''; }" required>
                             <input id="description" type="text" value="Enter description*" onblur="if(this.value == '') { this.value ='Enter description*'; }" onfocus="if(this.value =='Enter description*') { this.value = ''; }" required>
-                           <!--<input id="location" type="text" value="Enter location*" onblur="if(this.value == '') { this.value ='Enter location*'; }" onfocus="if(this.value =='Enter location*') { this.value = ''; }"required />
+                            <input id="city" type="text" value="Enter city*" onblur="if(this.value == '') { this.value ='Enter city*'; }" onfocus="if(this.value =='Enter city*') { this.value = ''; }" required>
+                            <input id="country" type="text" value="Enter country*" onblur="if(this.value == '') { this.value ='Enter country*'; }" onfocus="if(this.value =='Enter country*') { this.value = ''; }" required>
+                            <input id="landmark" type="text" value="Enter landmark*" onblur="if(this.value == '') { this.value ='Enter landmark*'; }" onfocus="if(this.value =='Enter landmark*') { this.value = ''; }" required>
+                            <input id="pincode" type="text" value="Enter pincode*" onblur="if(this.value == '') { this.value ='Enter pincode*'; }" onfocus="if(this.value =='Enter pincode*') { this.value = ''; }" required>
+                            <input id="state" type="text" value="Enter state*" onblur="if(this.value == '') { this.value ='Enter state*'; }" onfocus="if(this.value =='Enter state*') { this.value = ''; }" required>
+                            <input id="street" type="text" value="Enter street*" onblur="if(this.value == '') { this.value ='Enter street*'; }" onfocus="if(this.value =='Enter street*') { this.value = ''; }" required>
+                            
+                            <div class='input-group date' id='datetimepicker1'>
+                                <input id="datetime"type='text' class="form-control" />
+                                <span class="input-group-addon">
+                                <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                             </div>
+                            <!--<input id="location" type="text" value="Enter location*" onblur="if(this.value == '') { this.value ='Enter location*'; }" onfocus="if(this.value =='Enter location*') { this.value = ''; }"required />
                     --> 
                             <div class="clearfix"></div>
                             <label><input type="submit" value="Host" class="ritekhed-bordercolor ritekhed-color"></label>
@@ -961,6 +973,17 @@
     <script src="script/jquery.countdown.min.js"></script>
     <script src="https://maps.googleapis.com/maps/api/js"></script>
     <script src="script/functions.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://cdn.jsdelivr.net/momentjs/2.14.1/moment.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <script>
+    $(function () {
+        $('#datetimepicker1').datetimepicker();
+    });
+    </script>
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.6.0/firebase-auth.js"></script>
