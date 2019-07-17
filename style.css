@@ -383,28 +383,28 @@ address                         { font-style: italic; }
 }
 
 
-.ritekhed-login-box {
+.ritekhed-login-box .ritekhed-account-box{
     float: left;
     width: 100%;
     background-color: #28292b;
     padding: 31px 40px 33px 40px;
 }
-.ritekhed-login-box h4 {
+.ritekhed-login-box .ritekhed-account-box h4 {
     color: #ffffff;
     text-transform: uppercase;
     padding-bottom: 8px;
     border-bottom: 1px solid #37383a;
     margin-bottom: 30px;
 }
-.ritekhed-login-box form { margin-bottom: 31px; }
+.ritekhed-login-box .ritekhed-account-box form { margin-bottom: 31px; }
 .ritekhed-login-box form,
 .ritekhed-login-box form input[type='text'],
 .ritekhed-login-box form input[type='password'] {
     float: left;
     width: 100%;
 }
-.ritekhed-login-box form input[type='text'],
-.ritekhed-login-box form input[type='password'] {
+.ritekhed-login-box .ritekhed-account-box form input[type='text'],
+.ritekhed-login-box .ritekhed-account-box form input[type='password'] {
     background-color: #232323;
     padding: 6px 20px;
     height: 40px;
@@ -413,7 +413,7 @@ address                         { font-style: italic; }
     font-style: italic;
     margin-bottom: 15px;
 }
-.ritekhed-login-box form a {
+.ritekhed-login-box .ritekhed-account-box form a {
     color: #999999;
     font-size: 14px;
     float: right;
@@ -422,13 +422,13 @@ address                         { font-style: italic; }
     margin-top: 5px;
     margin-bottom: 25px;
 }
-.ritekhed-login-box form label {
+.ritekhed-login-box .ritekhed-account-box form label {
     float: left;
     width: 100%;
     position: relative;
     margin-bottom: 0px;
 }
-.ritekhed-login-box form input[type='submit'] {
+.ritekhed-login-box .ritekhed-account-box form input[type='submit'] {
     float: left;
     width: 100%;
     background-color: transparent;
@@ -465,7 +465,7 @@ address                         { font-style: italic; }
     font-size: 14px;
     margin: 7px 6px 0px 0px;
 }
-.ritekhed-login-box p {
+.ritekhed-login-box .ritekhed-account-box p {
     float: left;
     width: 100%;
     text-align: center;
@@ -473,10 +473,10 @@ address                         { font-style: italic; }
     color: #ffffff;
     margin: 5px 0px 0px 0px;
 }
-.ritekhed-login-box p a { text-transform: uppercase; }
+.ritekhed-account-box .ritekhed-login-box p a { text-transform: uppercase; }
 .login-network li.ritekhed-twitter a { background-color: #02aaf1; }
 .login-network li.ritekhed-google-plus a { background-color: #eb6250; }
-.ritekhed-login-close {
+.ritekhed-account-close .ritekhed-login-close {
     position: absolute;
     right: -24px;
     top: -24px;
